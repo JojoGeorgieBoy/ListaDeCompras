@@ -1,0 +1,46 @@
+import React, { useState } from 'react';
+
+interface CheckboxItem {
+  id: number;
+  label: string;
+}
+
+const CheckboxList = () => {
+  const [checkboxItems] = useState<CheckboxItem[]>([
+    { id: 1, label: 'Item 1' },
+    { id: 2, label: 'Item 2' },
+    { id: 3, label: 'Item 3' },
+  ]);
+
+  const [checkedItems, setCheckedItems] = useState<number[]>([]);
+
+  const handleCheckboxChange = (id: number) => {
+    if (checkedItems.includes(id)) {
+      setCheckedItems(checkedItems.filter((itemId) => itemId !== id));
+    } else {
+      setCheckedItems([...checkedItems, id]);
+    }
+  };
+
+//   return (
+//     <div className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md">
+//       <h2 className="text-lg font-bold mb-4">Checkbox List</h2>
+//       <ul className="space-y-4">
+//         {checkboxItems.map((item) => (
+//           <li key={item.id} className="flex items-center">
+//             <input
+//               type="checkbox"
+//               checked={checkedItems.includes(item.id)}
+//               onChange={() => handleCheckboxChange(item.id)}
+//               placeholder='Chupalo'
+//               className="mr-2"
+//             />
+//             <span className="text-gray-700">{item.label}</span>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+};
+
+export default CheckboxList;
